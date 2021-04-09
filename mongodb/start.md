@@ -18,6 +18,14 @@ mongo help
 create path mongodb
 > mongod --dbpath ./path-file
 
+drop terminal with --logpath or --syslog
+> mongod --dbpath ./path-file --fork 
+> mongod --dbpath ./path-file --fork --logpath /var/log/mongodb/
+
+**Filter process in my terminal**
+ps aux | grep mongo
+
+
 reset initial state
 > db.dropDatabase
 
@@ -35,7 +43,11 @@ insert simple data
 find data in collection
 > db.myColletion.find()
 
+Where are logs 
+> cat mongo.log
 
+first ten lines
+> tail mongo.log -f
 __
 
 ### Types data in MongoDB
@@ -63,6 +75,7 @@ Data have information of data(), timestamp, second
 
 
 #### Crud
+
 query => filter
 ex: i want the document, with: b: 465
 > db.myColletion.find({b:465})
@@ -73,3 +86,31 @@ if exist:
 projection
 1 and 0 - true or false
 > db.myColletion.findOne({}, {name: 1, rank: 1, _id: 0})
+
+
+Create
+> insert( {} )
+> insertOne( {} )
+> insertMany([ {}, {} ])
+
+other infos:
+Continue insert with error 
+> ordered : true //default
+Ex
+> db.dados.inserMany([{a:12},{b:25},{c:456}])
+___
+
+Read
+> find()
+> findOne
+___
+
+Update
+> Update
+> updateOne
+> updateMany
+___
+
+Detele
+> deleteOne
+> deleteMany
