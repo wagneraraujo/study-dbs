@@ -96,21 +96,39 @@ Create
 other infos:
 Continue insert with error 
 > ordered : true //default
+> ordered : false // duplicate or invalid ignored, and continue insert others data
 Ex
 > db.dados.inserMany([{a:12},{b:25},{c:456}])
 ___
 
-Read
+**Read**
+
+find -> ({query})
 > find()
+
+
+
 > findOne
 ___
 
-Update
+**Update**
 > Update
 > updateOne
+>   > {
+  upsert: if not found, insert
+  writeConcert: document
+>   }
+> db.crud.updateOne({b:456}, {$set: {d: 482}})
+
+
 > updateMany
+> replaceOne
 ___
 
 Detele
 > deleteOne
 > deleteMany
+
+
+
+### Tests
